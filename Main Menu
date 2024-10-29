@@ -4,7 +4,7 @@ st.write("This is the starting point of our health app!")
 streamlit run health_app.py
 import streamlit as st
 
-st.title("My Health App")
+st.title("BiYourFusion")
 st.header("Log Your Daily Health Metrics")
 
 # Input fields for user health data
@@ -19,7 +19,7 @@ streamlit run health_app.py
 import streamlit as st
 import pandas as pd
 
-st.title("My Health App")
+st.title("BiYourFusion")
 st.header("Log Your Daily Health Metrics")
 
 # Initialize a DataFrame to store data
