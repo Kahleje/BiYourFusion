@@ -1,5 +1,4 @@
-import streamlit as st
-from pages import mental_health, fitness, nutrition, wellness
+
 
 # Set up the title and main sections
 st.title("Integrated Health App")
