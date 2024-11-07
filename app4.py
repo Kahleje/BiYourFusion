@@ -2,56 +2,97 @@ import streamlit as st
 import pandas as pd
 import datetime
 
-# Set page background and custom styles
+# Gradient background and custom styles
 st.markdown(
     """
     <style>
-    /* Background color gradient */
+    /* Gradient background */
     .main {
-        background: linear-gradient(to bottom right, #ffecd2, #fcb69f);
+        background: linear-gradient(135deg, #00C9FF, #92FE9D);
         font-family: 'Arial', sans-serif;
     }
 
     /* Title and headers styling */
-    h1 {
-        color: #E63946;
-        font-size: 3em;
-        text-align: center;
-    }
-    h2, h3 {
-        color: #1D3557;
+    h1, h2, h3 {
+        color: #FFFFFF;
     }
 
-    /* Container for data entry */
+    /* Input fields styling */
     .stTextInput, .stNumberInput, .stDateInput {
-        border: 1px solid #457B9D;
+        background-color: #F0F0F0;
+        border: 1px solid #FFFFFF;
         border-radius: 8px;
     }
 
-    /* Tabs styling */
-    .css-1ht1j8u, .css-1ht1j8u a {
-        color: #1D3557;
-        font-weight: bold;
-    }
-
-    /* Success and warning message styles */
-    .stAlert {
-        border-radius: 8px;
-    }
+    /* Message styling */
     .stAlert-success {
-        background-color: #A8DADC;
-        color: #1D3557;
+        background-color: #00A8CC;
+        color: #FFFFFF;
     }
     .stAlert-warning {
-        background-color: #F1FAEE;
-        color: #E63946;
+        background-color: #FFE15D;
+        color: #FFFFFF;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# App Title with styled header
+# Set up the app title and content
+st.title("BiYourFusion - Health Tracker App")
+
+# ... [rest of your app code here] ...
+import streamlit as st
+import pandas as pd
+import datetime
+
+# Image background styling
+st.markdown(
+    """
+    <style>
+    /* Background image */
+    .main {
+        background-image: url("fitness_background.jpg");
+        background-size: cover;
+        background-position: center;
+        font-family: 'Arial', sans-serif;
+    }
+
+    /* Title and headers styling */
+    h1, h2, h3 {
+        color: #FFFFFF;
+        text-shadow: 2px 2px 4px #000000;
+    }
+
+    /* Input fields styling */
+    .stTextInput, .stNumberInput, .stDateInput {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 8px;
+    }
+
+    /* Alert messages styling */
+    .stAlert-success {
+        background-color: rgba(34, 139, 34, 0.9);
+        color: #FFFFFF;
+    }
+    .stAlert-warning {
+        background-color: rgba(255, 69, 0, 0.9);
+        color: #FFFFFF;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Set up the app title and content
+st.title("BiYourFusion - Health Tracker App")
+
+# ... [rest of your app code here] ...
+import streamlit as st
+import pandas as pd
+import datetime
+
+# Set up the app title
 st.title("BiYourFusion - Health Tracker App")
 
 # Section 1: User Input
@@ -109,3 +150,83 @@ else:
     st.warning(f"Try to get {goal_sleep - sleep} more hours of sleep.")
 
 # Run the app with: `streamlit run app.py`
+import streamlit as st
+import pandas as pd
+import datetime
+
+# App Title
+st.title("BiYourFusion - In-depth Health Tracker")
+
+# Set up tabs
+tabs = st.tabs(["Daily Tracking", "Progress Charts", "Goals", "Settings"])
+
+# ---- Tab 1: Daily Tracking ----
+with tabs[0]:
+    st.header("Daily Tracking")
+
+    # Collect daily user data
+    date = st.date_input("Select date", datetime.date.today())
+    steps = st.number_input("Steps walked", min_value=0, value=0)
+    calories = st.number_input("Calories consumed", min_value=0, value=0)
+    sleep = st.number_input("Hours slept", min_value=0.0, max_value=24.0, value=8.0)
+    
+    # Display entered data
+    st.subheader("Today's Data")
+    data = {"Date": [date], "Steps": [steps], "Calories": [calories], "Sleep (hrs)": [sleep]}
+    daily_df = pd.DataFrame(data)
+    st.write(daily_df)
+
+# ---- Tab 2: Progress Charts ----
+with tabs[1]:
+    st.header("Progress Charts")
+
+    # Placeholder data for historical tracking
+    dates = pd.date_range(start="2023-01-01", periods=30)
+    steps_data = [5000 + i*200 for i in range(30)]  # Simulate step data
+    calories_data = [2000 - i*10 for i in range(30)]  # Simulate calorie data
+    sleep_data = [7 + (i % 3) for i in range(30)]  # Simulate sleep data
+
+    # Create a DataFrame with sample data
+    progress_df = pd.DataFrame({
+        "Date": dates,
+        "Steps": steps_data,
+        "Calories": calories_data,
+        "Sleep (hrs)": sleep_data
+    })
+
+    # Plotting the data
+    st.line_chart(progress_df.set_index("Date"))
+
+# ---- Tab 3: Goals ----
+with tabs[2]:
+    st.header("Set Your Health Goals")
+
+    goal_steps = st.number_input("Daily Steps Goal", min_value=0, value=10000)
+    goal_calories = st.number_input("Daily Calories Goal", min_value=0, value=2000)
+    goal_sleep = st.number_input("Daily Sleep Goal (hrs)", min_value=0.0, max_value=24.0, value=8.0)
+
+    # Display current goals
+    st.subheader("Current Goals")
+    st.write(f"Steps Goal: {goal_steps} steps")
+    st.write(f"Calories Goal: {goal_calories} calories")
+    st.write(f"Sleep Goal: {goal_sleep} hours")
+
+# ---- Tab 4: Settings ----
+with tabs[3]:
+    st.header("Settings")
+
+    # Profile information
+    user_name = st.text_input("Enter your name")
+    age = st.number_input("Enter your age", min_value=0, max_value=120, value=25)
+    weight = st.number_input("Enter your weight (kg)", min_value=0.0, max_value=300.0, value=70.0)
+    height = st.number_input("Enter your height (cm)", min_value=0.0, max_value=250.0, value=170.0)
+
+    # Display user profile
+    st.subheader("Profile Information")
+    st.write(f"Name: {user_name}")
+    st.write(f"Age: {age}")
+    st.write(f"Weight: {weight} kg")
+    st.write(f"Height: {height} cm")
+
+# Run the app with: `streamlit run app.py`
+
