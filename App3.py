@@ -137,5 +137,3 @@ with tabs[3]:
     st.write(f"Age: {age}")
     st.write(f"Weight: {weight} kg")
     st.write(f"Height: {height} cm")
-
-# Run the app with: `streamlit run app.py`
