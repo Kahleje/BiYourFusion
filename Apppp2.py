@@ -7,7 +7,12 @@ import streamlit as st
 import pandas as pd
 import datetime
 
-# Custom styling for the info box
+# Import necessary libraries
+import streamlit as st
+import pandas as pd
+import datetime
+
+# Custom styling for the info box with a blue background
 st.markdown(
     """
     <style>
@@ -42,9 +47,9 @@ st.markdown(
     /* Custom styling for instructions */
     .run-instruction {
         font-size: 18px;
-        color: #333333;
-        background-color: #f0f8ff;
-        border-left: 4px solid #00A8CC;
+        color: #FFFFFF;
+        background-color: #007BFF; /* Blue background */
+        border-left: 4px solid #FFFFFF;
         padding: 10px;
         font-weight: bold;
         font-family: 'Arial', sans-serif;
@@ -53,6 +58,12 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+# Set up the app title and content
+st.title("BiYourFusion - Health Tracker App")
+
+# Display the instruction with the custom class
+st.markdown('<div class="run-instruction">Run the app with: <code>streamlit run app.py</code></div>', unsafe_allow_html=True)
 
 # Set up the app title and content
 st.title("BiYourFusion - Health Tracker App")
