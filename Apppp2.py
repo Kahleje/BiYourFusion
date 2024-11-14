@@ -2,16 +2,6 @@ import streamlit as st
 import pandas as pd
 import datetime
 
-# Import necessary libraries
-import streamlit as st
-import pandas as pd
-import datetime
-
-# Import necessary libraries
-import streamlit as st
-import pandas as pd
-import datetime
-
 # Custom styling for the info box with a blue background
 st.markdown(
     """
