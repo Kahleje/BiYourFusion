@@ -157,34 +157,38 @@ import datetime
 # App Title
 st.title("BiYourFusion - In-depth Health Tracker")
 
-# Set up tabs
-tabs = st.tabs(["Daily Tracking", "Progress Charts", "Goals", "Settings"])
+# Sidebar for category selection
+with st.sidebar:
+    st.header("Navigation")
+    option = st.radio("Go to:", ["Daily Tracking", "Progress Charts", "Goals", "Settings"])
 
-# ---- Tab 1: Daily Tracking ----
-with tabs[0]:
+# ---- Daily Tracking ----
+if option == "Daily Tracking":
     st.header("Daily Tracking")
 
-    # Collect daily user data
-    date = st.date_input("Select date", datetime.date.today())
-    steps = st.number_input("Steps walked", min_value=0, value=0)
-    calories = st.number_input("Calories consumed", min_value=0, value=0)
-    sleep = st.number_input("Hours slept", min_value=0.0, max_value=24.0, value=8.0)
-    
+    # Sidebar inputs for Daily Tracking
+    with st.sidebar:
+        st.subheader("Daily Tracking Inputs")
+        date = st.date_input("Select date", datetime.date.today())
+        steps = st.number_input("Steps walked", min_value=0, value=0)
+        calories = st.number_input("Calories consumed", min_value=0, value=0)
+        sleep = st.number_input("Hours slept", min_value=0.0, max_value=24.0, value=8.0)
+
     # Display entered data
     st.subheader("Today's Data")
     data = {"Date": [date], "Steps": [steps], "Calories": [calories], "Sleep (hrs)": [sleep]}
     daily_df = pd.DataFrame(data)
     st.write(daily_df)
 
-# ---- Tab 2: Progress Charts ----
-with tabs[1]:
+# ---- Progress Charts ----
+elif option == "Progress Charts":
     st.header("Progress Charts")
 
     # Placeholder data for historical tracking
     dates = pd.date_range(start="2023-01-01", periods=30)
-    steps_data = [5000 + i*200 for i in range(30)]  # Simulate step data
-    calories_data = [2000 - i*10 for i in range(30)]  # Simulate calorie data
-    sleep_data = [7 + (i % 3) for i in range(30)]  # Simulate sleep data
+    steps_data = [5000 + i*200 for i in range(30)]  # Simulated step data
+    calories_data = [2000 - i*10 for i in range(30)]  # Simulated calorie data
+    sleep_data = [7 + (i % 3) for i in range(30)]  # Simulated sleep data
 
     # Create a DataFrame with sample data
     progress_df = pd.DataFrame({
@@ -194,16 +198,24 @@ with tabs[1]:
         "Sleep (hrs)": sleep_data
     })
 
+    # Sidebar inputs for chart filters (optional)
+    with st.sidebar:
+        st.subheader("Chart Settings")
+        st.write("Adjust chart settings here if needed.")
+
     # Plotting the data
     st.line_chart(progress_df.set_index("Date"))
 
-# ---- Tab 3: Goals ----
-with tabs[2]:
+# ---- Goals ----
+elif option == "Goals":
     st.header("Set Your Health Goals")
 
-    goal_steps = st.number_input("Daily Steps Goal", min_value=0, value=10000)
-    goal_calories = st.number_input("Daily Calories Goal", min_value=0, value=2000)
-    goal_sleep = st.number_input("Daily Sleep Goal (hrs)", min_value=0.0, max_value=24.0, value=8.0)
+    # Sidebar inputs for setting goals
+    with st.sidebar:
+        st.subheader("Set Goals")
+        goal_steps = st.number_input("Daily Steps Goal", min_value=0, value=10000)
+        goal_calories = st.number_input("Daily Calories Goal", min_value=0, value=2000)
+        goal_sleep = st.number_input("Daily Sleep Goal (hrs)", min_value=0.0, max_value=24.0, value=8.0)
 
     # Display current goals
     st.subheader("Current Goals")
@@ -211,15 +223,17 @@ with tabs[2]:
     st.write(f"Calories Goal: {goal_calories} calories")
     st.write(f"Sleep Goal: {goal_sleep} hours")
 
-# ---- Tab 4: Settings ----
-with tabs[3]:
+# ---- Settings ----
+elif option == "Settings":
     st.header("Settings")
 
-    # Profile information
-    user_name = st.text_input("Enter your name")
-    age = st.number_input("Enter your age", min_value=0, max_value=120, value=25)
-    weight = st.number_input("Enter your weight (kg)", min_value=0.0, max_value=300.0, value=70.0)
-    height = st.number_input("Enter your height (cm)", min_value=0.0, max_value=250.0, value=170.0)
+    # Sidebar inputs for profile information
+    with st.sidebar:
+        st.subheader("Profile Settings")
+        user_name = st.text_input("Enter your name")
+        age = st.number_input("Enter your age", min_value=0, max_value=120, value=25)
+        weight = st.number_input("Enter your weight (kg)", min_value=0.0, max_value=300.0, value=70.0)
+        height = st.number_input("Enter your height (cm)", min_value=0.0, max_value=250.0, value=170.0)
 
     # Display user profile
     st.subheader("Profile Information")
@@ -228,4 +242,5 @@ with tabs[3]:
     st.write(f"Weight: {weight} kg")
     st.write(f"Height: {height} cm")
 
-# Run the app with: `streamlit run app.py`
+# Instructions to run the app
+st.info("Run the app with: `streamlit run app.py`")
