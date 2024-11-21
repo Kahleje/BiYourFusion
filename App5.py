@@ -2,82 +2,53 @@ import streamlit as st
 import pandas as pd
 import datetime
 
-# Gradient background and custom styles
+# Custom styling for a lighter theme and eye-catching fonts
 st.markdown(
     """
     <style>
-    /* Gradient background */
+    /* Light background */
     .main {
-        background: linear-gradient(135deg, #00C9FF, #92FE9D);
-        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #FFFFFF, #F8F9FA);
+        font-family: 'Verdana', sans-serif;
     }
 
     /* Title and headers styling */
     h1, h2, h3 {
-        color: #FFFFFF;
+        color: #333333; /* Dark gray for better contrast */
+        text-shadow: 1px 1px 2px #DDDDDD;
     }
 
     /* Input fields styling */
     .stTextInput, .stNumberInput, .stDateInput {
-        background-color: #F0F0F0;
-        border: 1px solid #FFFFFF;
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
         border-radius: 8px;
+        color: #333333;
     }
 
-    /* Message styling */
-    .stAlert-success {
-        background-color: #00A8CC;
-        color: #FFFFFF;
-    }
-    .stAlert-warning {
-        background-color: #FFE15D;
-        color: #FFFFFF;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-# Set up the app title and content
-st.title("BiYourFusion - Health Tracker App")
-
-# ... [rest of your app code here] ...
-import streamlit as st
-import pandas as pd
-import datetime
-
-# Image background styling
-st.markdown(
-    """
-    <style>
-    /* Background image */
-    .main {
-        background-image: url("fitness_background.jpg");
-        background-size: cover;
-        background-position: center;
-        font-family: 'Arial', sans-serif;
-    }
-
-    /* Title and headers styling */
-    h1, h2, h3 {
-        color: #FFFFFF;
-        text-shadow: 2px 2px 4px #000000;
-    }
-
-    /* Input fields styling */
-    .stTextInput, .stNumberInput, .stDateInput {
-        background-color: rgba(255, 255, 255, 0.8);
-        border-radius: 8px;
+    /* Button styling */
+    button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
     }
 
     /* Alert messages styling */
     .stAlert-success {
-        background-color: rgba(34, 139, 34, 0.9);
-        color: #FFFFFF;
+        background-color: rgba(220, 240, 220, 0.9);
+        color: #2E7D32;
     }
     .stAlert-warning {
-        background-color: rgba(255, 69, 0, 0.9);
-        color: #FFFFFF;
+        background-color: rgba(255, 230, 200, 0.9);
+        color: #8C4500;
     }
     </style>
     """,
@@ -86,6 +57,7 @@ st.markdown(
 
 # Set up the app title and content
 st.title("BiYourFusion - Health Tracker App")
+
 
 # ... [rest of your app code here] ...
 import streamlit as st
